@@ -87,12 +87,12 @@ class SCE {
 결과 예측
 result = false
 num1 = 10
-num2 = 10
+num2 = 0
 
 
 result = true
 num1 = 20
-num2 = 20
+num2 = 0
 
 11.아래를 프로그래밍 하시오.
 국어 : 50
