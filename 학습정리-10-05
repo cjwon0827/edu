@@ -1,0 +1,111 @@
+1. 리터럴이란?
+-프로그램에서 직접 표현한 값, 소스 코드의 고정된 값을 대표하는 용어이다
+
+아래의 내용이 에러가 나는 이유와 수정 방법은? 
+System.out.println(3147483647 + 3147483648); //에러남
+- 출력하려고 하는 숫자가 int형으로 표현할 수 있는 범위보다 크기 때문에 int형 보다 더 큰 데이터타입인 long형으로 표현해줘야 하는데 표현 방법은 숫자 뒤에 l이나 L을 붙여주면 된다.
+
+3. 자동 형변환과 명시적 형변환에 대하여 설명하시오.
+- 자동 형변환은 데이터 타입이 작은 부분이 큰 데이터 타입에 대입될 때 자동적으로 큰 데이터타입 형식으로 변환되는 것을 의미하고, 명시적 형변환은 데이터 타입 종류에 상관없이
+(데이터타입)으로 사용자가 명시적으로 형변환 한 것을 의미한다.
+
+4.아래의 에러가 나는 이유를 설명하고 수정 하시오.
+
+int a = 3;
+int b = 4;
+	
+double result = a / b;
+System.out.println(result);
+
+- 변수 a와 b를 int형으로 선언하였기 때문에 double 형으로 선언된 result 값에 대입 될 수 없다.
+수정 코드
+int a = 3;
+int b = 4;
+		
+double result = (double)a / (double)b;
+System.out.println(result);
+
+5. 이스케이프 시퀀스의 종류를 나열하고 기능을 설명하시오.
+- \n : 개행(줄바꿈). 스크린 커서 위치를 다음줄의 처음으로 옮김
+  \t : 수평탭. 스크린 커서를 다음 탭으로 옮김
+  \r : 캐리지리턴. 스크린커서의 위치를 현재 줄의 처음으로 옮긴다. 개행하지 않는다. 
+  \\ : 이 기호 다음에 오는 문자를 덮어 쒸운다.
+
+6. 아래의 출력 결과를 확인하고, 130이 나오는 이유를 설명
+System.out.println('A'); 
+System.out.println('A' + 'A');
+- +기호는 연산자이기 때문에 'A'의 유니코드 값인 65로 취급되고 65 + 65 = 130의 결과가 나온다.
+
+7. 결합 방향과 우선순위에 대하여 설명하시오.(우선순위는 내림차순)
+   연산자                                                     결합방향 
+1. (), [], .                                                    -> 
+2. expr++, expr--                                               <-
+3. ++expr, --expr, +expr, -expr, ~, !, (type)                   <-
+4. *, /, %                                                      ->
+5. +, -                                                         ->
+6. <<, >>, >>>                                                  ->
+7. <, >, <=, >=, instannceof                                    ->
+8. ==, !=                                                       ->
+9. &                                                            ->
+10. ^                                                           ->
+11. |                                                           ->
+12. &&                                                          -> 
+13. ||                                                          ->
+14. ? expr : expr                                               <-
+15. =, +=, -=, *=, /=, %=, ^=, |=, <<=, >>=, >>>=               <-
+
+8. "1초과 100미만인가?"를 코딩으로 표현하면?
+    int num = 임의의 수;
+		boolean result;
+		result = (num > 1) && (num < 100);
+		System.out.println(result);
+
+9. "2의 배수 또는 3의 배수?" 를 코딩으로 표현 하면?
+    int num = 임의의 수;
+		boolean result;
+		result = ((num % 2) == 0) || ((num % 3) == 0);
+		System.out.println(result);
+
+10. 아래의 프린트 결과를 예측해 보고, 코딩 후 결과를 확인 하시오.()
+class SCE {
+	public static void main(String[] args) {
+		int num1 = 0;
+		int num2 = 0;
+		boolean result;    
+
+		result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
+    System.out.println("result = " + result);
+    System.out.println("num1 = " + num1);
+    System.out.println("num2 = " + num2 + '\\n'); // "
+	
+    result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
+    System.out.println("result = " + result);
+    System.out.println("num1 = " + num1);
+    System.out.println("num2 = " + num2);
+	}
+}
+결과 예측
+result = false
+num1 = 10
+num2 = 10
+
+
+result = true
+num1 = 20
+num2 = 20
+
+11.아래를 프로그래밍 하시오.
+국어 : 50
+영어 : 70
+수학 : 95
+
+총점과 평균을 구하시오.
+-단 평균은 소숫점 까지 나오도록 하시오
+    int kor = 50;
+		int eng = 70;
+		int math = 95;
+		int sum = kor + eng + math;
+		System.out.println(sum);
+		
+		double avg = (double)sum / 3;
+		System.out.println(avg);
