@@ -92,7 +92,7 @@ Scanner sc = new Scanner(System.in);
 		
 		String com_rpc; //컴퓨터가 내는 수
 		String my_rpc; //내가 내는 수
-		String choice; // Y/N선택
+		char choice; // Y N 선택
 		
 		
 		while(true) {
@@ -107,14 +107,17 @@ Scanner sc = new Scanner(System.in);
 				
 				if(com_rpc.equals(my_rpc)) {
 					System.out.println("비겼습니다.");
+					break;
 					
 				} else if(my_rpc.equals("바위")) {
 					System.out.println("이겼습니다.");
+					break;
 					
 				} else {
 					System.out.println("졌습니다.");
+					break;
 				}
-				break;
+				
 				
 			case 2:
 				com_rpc = "바위";
@@ -122,14 +125,16 @@ Scanner sc = new Scanner(System.in);
 				
 				if(com_rpc.equals(my_rpc)) {
 					System.out.println("비겼습니다.");
+					break;
 					
 				} else if(my_rpc.equals("보")) {
 					System.out.println("이겼습니다.");
+					break;
 					
 				} else {
 					System.out.println("졌습니다.");
+					break;
 				}
-				break;
 				
 			case 3:
 				com_rpc = "보";
@@ -137,14 +142,17 @@ Scanner sc = new Scanner(System.in);
 				
 				if(com_rpc.equals(my_rpc)) {
 					System.out.println("비겼습니다.");
+					break;
 					
 				} else if(my_rpc.equals("가위")) {
 					System.out.println("이겼습니다.");
+					break;
 					
 				} else {
 					System.out.println("졌습니다.");
+					break;
 				}
-				break;
+				
 			}
 			
 		}
