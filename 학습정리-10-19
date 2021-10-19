@@ -1,0 +1,104 @@
+1. Stirng 에서 concat 메서드에 대해서 설명하시오.
+- concat 메서드는 문자열을 연결시키는 역할을 한다.
+
+2. Stirng 에서 substring 메서드 사용법은?
+- 변수명.substring(start인덱스 번호, end인덱스 번호)로 사용하며 기능은 start인덱스 번호부터 end인덱스 번호 - 1 까지의 문자열을 반환한다.
+
+3. Stirng  compareTo 사용법은?
+- 
+
+4. String.valueOf 에 대하여 설명하시오.
+- 기본 자료형의 값을 문자열로 바꿔주는 함수이다.
+
+5. 아래가 실행되는 원리(함수)를 표현해 보세요.
+String str = "age" + 17;
+"age: ".concat(String.valueOf(17));
+
+6.StringBuilder 와 String 의 차이는?
+- StringBuilder 클래스는 객체를 직접 만들어줘서 사용해야 하지만 String 클래스는 객체 생성을 따로 하지 않아도 사용할 수 있다.
+
+7.아래의 메모리 그림을 그리시오. (1차원 배열)
+int[] ar1 = new int[5];
+
+8.아래의 메모리 그림을 그리시오. (1차원 배열)
+Box[] ar = new Box[5];
+
+9. 아래를 프로그래밍 하시오.
+
+"Hello.java" 문자열에서 파일명과 확장자인 java를 분리시키는 프로그램을 짜시오.
+
+입력: Hello.java
+출력: 파일이름은: Hello 이며 확장자는 java 입니다.
+
+입력: Java.avi
+출력: 파일 이름은: Java 이며 확장자는 avi 입니다.
+
+class Split{
+	private String java;
+	
+	public Split(String java) {
+		if (java.contains(".")) {
+			this.java = java;
+		} else {
+			System.out.println("다시 입력해주세요");
+		}
+	}
+	
+	void show() {
+		int idx = java.indexOf(".");
+		String name = java.substring(0, idx);
+		System.out.println("파일이름은 " + name + " 이며 ");
+		String ext = java.substring(idx + 1);
+		System.out.println("확장자는 " + ext + " 입니다.");
+	}
+	
+}
+
+public class SplitJava {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String java;
+		System.out.print("입력 : ");
+		java = sc.next();
+		
+		Split s = new Split(java);
+		s.show();
+	}
+}
+
+10.아래를 배열을 활용하여 프로그램을 짜시오.
+화폐매수 구하기
+- 1원 부터 5000 원 까지 랜덤으로 생성.
+- 500원 100 원 50 원 10원은 배열로 선언 하여 저장 
+
+해당 랜덤생성된 화폐 매수를 아래와 같이 출력
+
+2860원 
+
+출력
+500원 : 5개 
+100원 : 3개 
+50원 : 1개 
+10원 : 1개
+
+public static void main(String[] args) {
+		int r_money = (int) (Math.random() * 5000 + 1);
+		
+		if (r_money % 10 != 0) {
+			r_money = r_money - (r_money % 10);
+			System.out.println(r_money + "원");
+		} else {
+			System.out.println(r_money + "원");
+		}
+		int five_hund = r_money / 500;
+		int one_hund = r_money % 500 / 100;
+		int fifty = r_money % 500 % 100 / 50;
+		int ten = r_money % 5000 % 100 % 50 / 10;
+		
+		int[] count_money = {five_hund, one_hund, fifty, ten};
+		System.out.println("500원 : " + count_money[0] + "개");
+		System.out.println("100원 : " + count_money[1] + "개");
+		System.out.println("50원 : " + count_money[2] + "개");
+		System.out.println("10원 : " + count_money[3] + "개");
+			
+		}
