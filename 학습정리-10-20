@@ -88,11 +88,13 @@ public static void main(String[] args) {
 public static void main(String[] args) {
 		char[] alph = new char[26];
 		
-		for (char i = 65; i < 65 + alph.length; i++) {
-			System.out.print(i + " ");
+		for (int i = 0; i < alph.length; i++) {
+			alph[i] = (char)('A' + i);
 		}
-		System.out.println();
-		System.out.println("알파벳은 " + alph.length + "개");
+		
+		for (char c : alph) {
+			System.out.print(c + " ");
+		}
 	}
 
 9.
