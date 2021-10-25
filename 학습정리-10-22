@@ -63,6 +63,74 @@ ex)void yummy()
 [수희]:
 3  3  3  수희님이 이겼습니다!
 
+class Person{
+	private String name;
+	private int num1, num2, num3;
+	
+	public Person(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public boolean equalNum() {
+		num1 = (int) (Math.random() * 3 + 1);
+		num2 = (int) (Math.random() * 3 + 1);
+		num3 = (int) (Math.random() * 3 + 1);
+		System.out.print(num1 + " " + num2 + " " + num3 + " ");
+		System.out.println();
+		
+		if (num1 == num2 && num2 == num3) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}
+
+public class Gambling {
+	public static void main(String args[]) {
+		String name;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("1번째 선수 이름 : ");
+		name = sc.next();
+		Person p1 = new Person(name);
+		
+		System.out.print("2번째 선수 이름 : ");
+		name = sc.next();
+		Person p2 = new Person(name);
+		
+		String buffer = sc.nextLine();
+		
+		while(true) {
+			System.out.println("[" + p1.getName() + "]:");
+			buffer = sc.nextLine();
+			if (p1.equalNum()) {
+				System.out.print(p1.getName() + "님이 이겼습니다." + "\t");
+				break;
+			}
+			System.out.println("아쉽군요");
+			
+			System.out.println("[" + p2.getName() + "]");
+			buffer = sc.nextLine();
+			if(p2.equalNum()) {
+				System.out.println(p2.getName() + "님이 이겼습니다.");
+			}
+			System.out.println("아쉽군요");
+		}
+	
+	}
+}
+
+
+
 
 
 7. 프로그래밍
@@ -89,6 +157,62 @@ ex)void yummy()
 2  2  1  아쉽군요!
 [황]:
 2  2  2  황님이 이겼습니다!
+
+class Person2{
+	private String name;
+	private int num1, num2, num3;
+	
+	public Person2(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public boolean equlNum() {
+		num1 = (int) (Math.random() * 3 + 1);
+		num2 = (int) (Math.random() * 3 + 1);
+		num3 = (int) (Math.random() * 3 + 1);
+		System.out.println(num1 + " " + num2 + " " + num3);
+		
+		if (num1 == num2 && num2 == num3) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+public class Gambling2 {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("겜블링 게임에 참여할 선수 숫자 : ");
+		int joinNum = sc.nextInt();
+		Person2[] arrPerson = new Person2[joinNum]; 
+		
+		String buffer = sc.nextLine();
+		
+		while(true) {
+		for (int i = 0; i < arrPerson.length; i ++) {
+			System.out.print((i+1) + "번째 선수 이름 : ");
+			String name = sc.next();
+			arrPerson[i] = new Person2(name);
+			}
+		
+		for (int i = 0; i < arrPerson.length; i ++) {
+			buffer = sc.nextLine();
+			System.out.println("[" + arrPerson[i].getName() + "]:");
+			
+			if(arrPerson[i].equlNum()) {
+				System.out.println(arrPerson[i].getName() + "님이 이겼습니다.");
+				return ;
+			}
+			System.out.println("아쉬워요");
+			}
+		}
+	}
+}
 
 
 8.주말에 개별 진척도 꼭 못한거 내지는 부족한거 반드시 채워 주시기 바랍니다.
