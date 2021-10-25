@@ -34,8 +34,37 @@ ex)void yummy()
 
 
 5.자바의 정석: 연습 문제 56page - 3개의 함수를 완성 하시오.
+void buy(Product p) {
+		if (money < p.price) {
+			System.out.println("잔액이 부족하여 " + p + "을/를 살 수 없습니다.");
+			return;
+		} else {
+			money = money - p.price;
+			add(p);
+		}
+	}
 
-
+void add(Product p) {
+		if (i >= cart.length) {
+			Product[] bigcart = new Product[cart.length * 2];
+			System.arraycopy(cart, 0, bigcart, 0, cart.length);
+			cart = bigcart;
+		}
+		cart[i++] = p;
+	} // add(Product p)
+	
+void summary() {
+		String itemList = "";
+		int sum = 0;
+	
+		for (Product p : cart) {
+			itemList  = itemList + p.toString();
+			sum = sum + p.price;
+		}
+		System.out.print("구입한 물건 : " + itemList);
+		System.out.println("합계 : " + sum);
+		System.out.println("잔액 : " + money);
+	}
 6. 갬블링 게임을 만들어 보자. (문제 5번 과 6번은 상속은 안써도됨)
 두 사람이 게임을 진행한다. 
 이들의 이름을 키보드로 입력 받으며 
