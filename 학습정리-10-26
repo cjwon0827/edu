@@ -1,0 +1,158 @@
+1. Object 클래스란?
+- 자바의 모든 클래스가 상속 받는 클래스이다.
+
+2. 아래의 소스코드에 대하여 아래와 같이 출력되는 이유는?
+출력
+A@28a418fc
+==============
+class A{
+}
+
+public class Test {
+	public static void main(String[] args) {
+		A a = new A();
+		System.out.println(a); // String s = String.valueOf(x); -> s가 주소 뿌림
+	}
+}
+- new 연산자가 생성한 객체의 주소값이 a에 할당되기 때문에 println(a)를 하게 되면 주소값이 출력되게 한다.
+  만약 객체에 직접 접근하여 원하는 값을 출력하기 위해서는 object클래스가 제공하는 toString 함수를 이용하면 된다.
+  
+3. class이름 및 함수에서 final의 의미는?
+- 클래스를 상속할 수 없도록 만들어준다.
+
+4.아래의 Main돌아 가도록 프로그래밍 하시오.
+
+interface Printable { // MS가 정의하고 제공한 인터페이스
+	public void print(String doc);
+}
+
+class SPrinterDriver implements Printable{
+	@Override
+	public void print(String doc) {
+		System.out.println("This is Sasung printer");
+		System.out.println("This is a report about ...");
+	}
+}
+
+class LPrinterDriver implements Printable{
+	@Override
+	public void print(String doc) {
+		System.out.println("From LG printer");
+		System.out.println("This is a report about ...");
+	}
+}
+
+	//SPrinterDriver 와 LPrinterDriver를 만드시오
+	public static void main(String[] args) {
+		String myDoc = "This is a report about...";
+
+		// 삼성 프린터로 출력
+		Printable prn = new SPrinterDriver();
+		prn.print(myDoc);
+		System.out.println();
+
+		// LG 프린터로 출력
+		prn = new LPrinterDriver();
+		prn.print(myDoc);
+	}
+
+/*
+출력: 
+From Samsung printer
+This is a report about ...
+From LG printer
+This is a report about ...
+*/
+
+5. @Override 에 대하여 설명하시오.
+- 상위 클래스의 메소드를 오버라이딩 하는 것이 목적이라는 선언이며, 오버라이딩을 하는 형태가 아니면 컴파일러가 오류 메시지를 전달한다.
+
+6. interface 에 대하여 설명해 보시오.
+- interface는 클래스와 다르게 메서드에 바디를 갖지 못하며, 자손에서 메서드들을 정의해줘야 한다.
+  또한 단일상속만 가능했던 것을 다중상속이 가능하게 만들어준다.
+
+7.interface 안에 올 수 있는 것은 두가지를 말해 보시오?
+- 상수와 추상메서드(바디를 가지지 않은 메서드)
+
+8. abstract 키워드란?
+- interface 안에 들어가는 추상메서드를 정의할 때 쓰이는 키워드이다.
+
+9.아래의 결과가 나오도록 프로그래밍 하시오.
+Object obj = new Circle(10);
+System.out.println(obj);
+
+class Circle{
+	private int radius;
+	public Circle(int radius) {
+		this.radius = radius;
+	}
+	
+	public double getArea() {
+		return radius * radius * Math.PI;
+	}
+	
+	public String toString() {
+		return "넓이는 " + getArea() + "입니다.";
+	}
+}
+
+//출력: 넓이는 314.134 입니다. (예시)
+10. 아래의 프로그래밍을 하시오.
+
+아래의 인터페이스에 맞추어(상속하여) 아래를 프로그래밍 하시오.
+
+Circle, Rectangle , Triangle
+
+
+interface AreaGetable{
+double getArea();
+}
+
+class Circle implements AreaGetable{
+	private int radius;
+	public Circle(int radius) {
+		this.radius = radius;
+	}
+	
+	@Override
+	public double getArea() {
+		return radius * radius * Math.PI;
+	}
+}
+
+class Rectangle implements AreaGetable{
+	private int width, height;
+	public Rectangle(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public double getArea() {
+		return width * height;
+	}
+}
+
+class Triangle extends Rectangle implements AreaGetable{
+	public Triangle(int width, int height) {
+		super(width, height);
+	}
+
+	@Override
+	public double getArea() {
+		double result = super.getArea() / 2;
+		return result;
+	}
+}
+
+main(){
+
+AreaGetable area = new Circle(4);
+		System.out.println(area.getArea());
+
+		area = new Rectangle(4,5);
+		System.out.println(area.getArea());
+
+		area = new Triangle(4,5);
+		System.out.println(area.getArea());
+}
