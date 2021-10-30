@@ -42,6 +42,86 @@
 
 8학기 총 평균 평점은 4.0375점입니다.
 
+import java.util.Scanner;
+
+class Person{
+	private int age;
+	private String name, address;
+	public Person(int age, String name, String address) {
+		this.age = age;
+		this.name = name;
+		this.address = address;
+	}
+
+	public void printInfo() {
+		System.out.println("이름 : " + name);
+		System.out.println("나이 : " + age);
+		System.out.println("주소 : " + address);
+	}
+}
+
+class Student extends Person{
+	private String school, major;
+	private int stuNum;
+
+	public Student(String school, String major, int stuNum) {
+		super(stuNum, major, school);
+		this.school = school;
+		this.major = major;
+		this.stuNum = stuNum;
+	}
+
+	public void printInfo() {
+		super.printInfo();
+		System.out.println("학교 : " + school);
+		System.out.println("학과 : " + major);
+		System.out.println("학번 : " + stuNum);
+	}
+}
+
+public static void average() {
+		double sum = 0;
+		double avg;
+		Scanner sc = new Scanner(System.in);
+		double[] avgScore = new double[8];
+		System.out.println("8학기 성적을 순서대로 입력하세요");
+		System.out.println();
+		
+		for (int i = 0; i < avgScore.length; i++) {
+			System.out.print((i+1) + "학기 학점 -> ");
+			avgScore[i] = sc.nextDouble();
+			sum = sum + avgScore[i];
+		}
+		avg = sum / avgScore.length;
+		System.out.println("8학기 총 평균 평점은 " + avg + "점 입니다.");
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String name, address, school, major;
+		int age, stuNum;
+		
+		System.out.print("이름 : ");
+		name = sc.next();
+		System.out.print("나이 : ");
+		age = sc.nextInt();
+		System.out.println();
+		
+		System.out.print("주소 : ");
+		address = sc.next();
+		Person p = new Person(age, name, address);
+		
+		System.out.print("학교 : ");
+		school = sc.next();
+		System.out.print("학과 : ");
+		major = sc.next();
+		System.out.print("학번 : ");
+		stuNum = sc.nextInt();
+		Student st = new Student(school, major, stuNum);
+		
+		st.printInfo();
+		average();
+	}	
 
 7.철수 학생은 다음 3개의 필드와 메소드를 가진 4개의 클래스 Add, Sub, Mul, Div를 작성하려고 한다.
 
