@@ -184,10 +184,6 @@ import java.util.Scanner;
 
 abstract class Calc{
 	protected int a, b;
-	public Calc(int a, int b) {
-		this.a = a;
-		this.b = b;
-	}
 	
 	void setValue(int a, int b) {
 		this.a = a;
@@ -198,16 +194,6 @@ abstract class Calc{
 }
 
 class Add extends Calc{
-	public Add(int a, int b) {
-		super(a, b);
-	}
-
-	@Override
-	void setValue(int a, int b) {
-		super.a = a;
-		super.b = b;
-	}
-
 	@Override
 	int calculate() {
 		return a + b;
@@ -215,16 +201,6 @@ class Add extends Calc{
 }
 
 class Sub extends Calc{
-	public Sub(int a, int b) {
-		super(a, b);
-	}
-
-	@Override
-	void setValue(int a, int b) {
-		super.a = a;
-		super.b = b;
-	}
-
 	@Override
 	int calculate() {
 		return a - b;
@@ -232,16 +208,6 @@ class Sub extends Calc{
 }
 
 class Mul extends Calc{
-	public Mul(int a, int b) {
-		super(a, b);
-	}
-
-	@Override
-	void setValue(int a, int b) {
-		super.a = a;
-		super.b = b;
-	}
-
 	@Override
 	int calculate() {
 		return a * b;
@@ -249,10 +215,6 @@ class Mul extends Calc{
 }
 
 class Div extends Calc{
-	public Div(int a, int b) {
-		super(a, b);
-	}
-
 	@Override
 	void setValue(int a, int b) {
 		super.a = a;
@@ -268,8 +230,9 @@ class Div extends Calc{
 public static void main(String[] args) {
 		int num1, num2;
 		String op;
+		Calc cal = null;
 		
-		while(true) {
+		
 		try {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("두 정수와 연산자를 입력하시오 >> ");
@@ -279,33 +242,32 @@ public static void main(String[] args) {
 		
 		switch (op) {
 		case "+":
-			Calc add = new Add(num1, num2);
-			System.out.println("계산 결과 : " + add.calculate());
+			cal = new Add();
 			break;
 		
 		case "-":
-			Calc sub = new Sub(num1, num2);
-			System.out.println("계산 결과 : " + sub.calculate());
+			cal = new Sub();
 			break;
 			
 		case "*":
-			Calc mul = new Mul(num1, num2);
-			System.out.println("계산 결과 : " + mul.calculate());
+			cal = new Mul();
 			break;
 			
 		case "/":
-			Calc div = new Div(num1, num2);
-			System.out.println("계산 결과 : " + div.calculate());
+			cal = new Div();
 			break;
 
 		default:
 			System.out.println("잘못된 연산자 입력입니다. 다시 입력해주세요.");
 		}
+		cal.setValue(num1, num2);
+    	System.out.println(cal.calculate());
+    	
 		} catch(Exception e) {
 			System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
 		}
+		
 		}
-	}	
 
 8. 문자열을 입력 받아 한 글자씩 회전시켜 모두 출력하는 프로그램을 작성하라.
 (클래스로 작성할 필요없이 메인에서 직접 할것)
