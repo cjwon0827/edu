@@ -1,11 +1,17 @@
 1. Object클래스의 11개 함수를 나열해 보시오.
 그중 우리가 외워야 할 함수들은 찍어 보세요 ㅎㅎ
+- toString() 메소드, equals() 메소드, clone() 메소드, finalize() 메소드, getClass() 메소드, hashCode() 메소드, wait()메소드, notify()메소드, notifyAll()메소드 등등
+그 중 중요한 함수는 toString() 메소드, equals() 메소드, hashCode() 메소드
 
 2. equals 함수에 대하여 설명하시오.
+- equals는 객체와 객체가 같은 것인지를 비교하는 함수이다
 
 3. String 클래스 에서 문자열 비교시 equals를 쓰는 이유는?
+- equals 메소드는 비교하고자 하는 대상의 내용 자체를 비교하기 때문이다.
 
 4. shallow copy, deep copy 의 차이는?
+- 얕은 복사는 주소값만 복사하지만 깊은 복사는 실제값을 새로운 메모리 공간에 복사한다.
+
 5. 금일 배운 Rectangle의 shall copy 와 deep copy 일 때의 메모리 그림을 그려보시오.
 
 6. 아래를 프로그래밍 하시오.
