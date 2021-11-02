@@ -20,8 +20,8 @@ class Person{
 	
 	@Override
 	public boolean equals(Object obj) {
-		Person p = (Person)obj;
-		if(this.name == p.name)
+		Person p1 = (Person)obj;
+		if(this.name.equals(p1.name))
 			return true;
 		else
 			return false;
