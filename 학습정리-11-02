@@ -39,7 +39,7 @@ class Person implements Comparable{
 	@Override
 	public int compareTo(Object o) {
 		Person p = (Person)o;
-		return this.name.charAt(0) - p.name.charAt(0);
+		return this.name.compareTo(p.name);
 	}
 	
 	@Override
