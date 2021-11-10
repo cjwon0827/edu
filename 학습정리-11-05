@@ -65,6 +65,58 @@ LinkedList : 리스트 기반 자료구조, 리스트를 구성하여 인스턴�
 6. 5명의 별명을 입력 받아 ArrayList에 저장하고 이들 중 별명의 길이가
 제일 긴 별명을 출력하시오. (단, 각 별명의 길이는 모두 다르게 입력한다.)
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Person{
+	public static int COUNT = 5;
+	ArrayList<String> nickName;
+	
+	
+	public Person() {
+		nickName = new ArrayList<>();
+	}
+	
+	public ArrayList<String> printNickName() {
+		Scanner sc = new Scanner(System.in);
+		for (int i = 1; i <= COUNT; i++) {
+			System.out.println(i + "번째 별명을 입력하세요");
+			String name = sc.next();
+			
+			if (i > 1) {
+				for (int j = 0; j < i-1; j++) {
+					if(nickName.get(j).length() == name.length()) {
+						System.out.println("별명의 길이는 같을 수 없습니다. 다시 입력해주세요");
+						i--;
+						continue;
+					}
+				}
+			}
+			nickName.add(name);
+		}
+		return nickName;
+	}
+
+	public void printMaxNickName() {
+		int max = 0;
+		
+		String name = null;
+		
+		for(String s : nickName) {
+			if (max < s.length()) {
+				max = s.length();
+				name = s;
+			}
+		}
+		System.out.println("가장 긴 별명 : " + name);
+	}
+}
+
+public static void main(String[] args) {
+		Person p = new Person();
+		p.printNickName();
+		p.printMaxNickName();
+	}
 
 
 7.Scanner 클래스로 -1이 입력될 때까지 양의 정수를 입력받아 List에 저장하고 
