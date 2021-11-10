@@ -173,6 +173,58 @@ public static void main(String[] args) {
 
 2.3333333333333335
 
+public static void main(String[] args) {
+		final int GRADE = 6;
+		char score_type;
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Character> avg_ch = new ArrayList<>();
+		
+		
+		try {
+		System.out.print("6개의 학점을 빈 칸으로 분리 입력(A/B/C/D/F) >> ");
+		for(int i = 0; i < GRADE; i++) {
+			score_type = sc.next().charAt(0);
+			
+			switch (score_type) {
+			case 'A', 'a', 'b', 'B', 'c', 'C', 'd', 'D', 'f', 'F': 
+				break;
+			default:
+				throw new InputMismatchException();
+			}
+			avg_ch.add(score_type);
+		}
+		double sum = 0;
+		
+		for(int i = 0; i < avg_ch.size(); i++) {
+			char c = avg_ch.get(i);
+			switch (c) {
+			case 'a', 'A': 
+				sum += 4.0;
+				break;
+			case 'b', 'B':
+				sum += 3.0;
+				break;
+			case 'c', 'C':
+				sum += 2.0;
+				break;
+			case 'd', 'D':
+				sum += 1.0;
+				break;
+			case 'f', 'F':
+				sum += 0.0;
+				break;
+			default:
+				throw new InputMismatchException();
+			}
+		}
+		double avg = sum / avg_ch.size();
+		System.out.println(avg);
+		} catch(Exception e) {
+			System.out.println("잘못 입력하셨습니다. 처음부터 다시 입력해주세요");
+			main(args);
+		}
+	}
+
 9.하나의 학생 정보를 나타내는 Student 클래스에는 이름, 학과, 학번, 학점 평균을 저장하는 필드가 있다.
 
 (1) 학생마다 Student 객체를 생성하고 4명의 학생 정보를 ArrayList<Student> 컬렉션에 저장한 후에, ArrayList<Student>의 모든 학생(4명) 정보를 출력하고 학생 이름을 입력받아 해당 학생의 학점 평균을 출력하는 프로그램을 작성하라.
