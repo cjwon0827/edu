@@ -1,14 +1,32 @@
 1. 프로세스와 쓰레드의 차이점은?
+- 프로세스는 실행중인 프로그램을 뜻하며 쓰레드는 프로세스 내에서 실행되는 여러 흐름의 단위를 의미한다.
+
 2. 쓰레드에서 동기화란 무엇인가?
+- 한 번에 하나의 쓰레드만 객체에 접근할 수 있도록 객체에 락(lock)을 걸어서 데이터의 일관성을 유지하는 것을 의미한다.
+
 3.html 에서  display 종류와 속성에 대하여 설명하시오.
+- block : 가로 화면 전체를 차지하는 디스플레이 종류
+- inline : 본인의 영역(Content)만 가지는 디스플레이 종류
+- inline-block : 본인의 영역(Content)을 가지고 있지만 속성 값을 바꿔줄 수 있는 디스플레이 종류
+
 4.px 과 em 의 차이는? (font)
+- px은 표시장치(모니터)에 따라서 상대적인 크기를 갖고, em은 일반적으로 해당 폰트의 대문자 M의 너비를 기준으로 크기를 갖는다.
+
 5. inline-block 태그의 종류는?
+inline-block 태그의 종류는 <input>, <select> 등등의 태그가 존재한다.
+
 6. display:none; 과 visibility:hidden;의 차이는?
+- display:none은 화면상에서 아예 보이지 않게 하는 속성이고, visibility:hidden은 보이지만 않고 해당 공간은 존재. width와 height값을 주었다면 그만큼 공간은 존재하게 된다.
 
 7.HashMap<Integer, String> map = new HashMap<>();
    map.put(45, "Brown");
    map.put(37, "James");
    map.put(23, "Martin");
+   
+   Set<Integer> ks = map.keySet();
+		
+		for(Integer n : ks)
+			System.out.println(map.get(n).toString());
 
 ======================================
 위의 Value 값이 다나오도록 for 문 돌리시오.
@@ -17,7 +35,53 @@
 Set 으로 구현 과
 일반 for 문 구현을 따로 하시오.
 
+set으로 구현
+public static void main(String[] args) {
+		Set<Integer> lotto = new HashSet<>();
+		
+		while(lotto1.size() != 6) {
+			int random = (int) (Math.random() * 45 + 1);
+			lotto.add(random);
+		}
+		
+		for(Integer n : lotto)
+			System.out.println(n);
+	}
+   
+for문으로 구현
+public static void main(String[] args) {
+		int[] lotto = new int[6];
+		
+		for (int i = 0; i < lotto.length; i++) {
+			int random = (int) (Math.random() * 45 + 1);
+			lotto[i] = random;
+			for (int j = 0; j < i; j++) {
+				if(lotto[i] == lotto[j]) {
+					i--;
+               continue;
+			}
+		}
+	}
+		for (int i : lotto)
+			System.out.println(i);
+}
+
 9.아래가 돌아 가도록 구현하시오.
+import javax.swing.JOptionPane;
+
+class ThreadCount extends Thread{
+	public void run() {
+		for(int i = 10; i > 0; i--) {
+			System.out.println(i);
+		
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			
+		}
+		}
+	}
+}
 
     main(){
         ThreadCount threadCount = new ThreadCount();
